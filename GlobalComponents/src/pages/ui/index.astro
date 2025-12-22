@@ -1,0 +1,102 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Button from "../../components/ui/Button.jsx";
+import ButtonIcon from "../../components/ui/ButtonIcon.jsx";
+import ButtonAnimate from "../../components/ui/ButtonAnimate.jsx";
+---
+
+<Layout>
+  <div class="max-w-7xl mx-auto px-4 py-12">
+    <div class="mb-12">
+      <h1 class="text-3xl font-bold">UI Components</h1>
+      <p class="text-gray-600 mt-2">
+        A collection of user interface components.
+      </p>
+    </div>
+
+    <div class="space-y-24">
+      <section>
+        <h2 class="text-xl font-semibold mb-6">Button Component</h2>
+        <div
+          class="border rounded-xl overflow-hidden bg-gray-50 p-4 sm:p-8 mb-12"
+        >
+          <div
+            class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100 p-6"
+          >
+            <Button variant="primary" size="large" href="https://wizcoder.com">
+              Primary Button
+            </Button>
+            <Button variant="primary" size="medium"> Primary Button </Button>
+            <Button variant="primary" size="small"> Primary Button </Button>
+            <Button variant="secondary" size="large" class="ml-4">
+              Secondary Button
+            </Button>
+            <Button variant="secondary" size="medium" class="ml-4">
+              Secondary Button
+            </Button>
+            <Button variant="secondary" size="small" class="ml-4">
+              Secondary Button
+            </Button>
+          </div>
+        </div>
+
+        <h2 class="text-xl font-semibold mb-6">Buttons with Icons</h2>
+        <div
+          class="border rounded-xl overflow-hidden bg-gray-50 p-4 sm:p-8 mb-12"
+        >
+          <div
+            class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100 p-6"
+          >
+            <div class="flex items-center space-x-4 gap-4">
+              <!-- Primary large with left icon -->
+              <ButtonIcon variant="primary" size="large" leftIcon="Plus">
+                Add Item
+              </ButtonIcon>
+
+              <!-- Primary large with right icon -->
+              <ButtonIcon variant="primary" size="large" rightIcon="Plus">
+                Add Item
+              </ButtonIcon>
+
+              <!-- Small icon-only primary -->
+              <ButtonIcon variant="primary" size="small" icon="Plus" />
+
+              <!-- Secondary medium with left icon -->
+              <ButtonIcon
+                variant="secondary"
+                size="medium"
+                leftIcon="ArrowRight"
+              >
+                Continue
+              </ButtonIcon>
+
+              <!-- Large with right icon -->
+              <ButtonIcon
+                href="https://wizcoder.com"
+                variant="secondary"
+                size="large"
+                rightIcon="ArrowRight"
+              >
+                Next Step
+              </ButtonIcon>
+
+              <!-- Small icon-only secondary -->
+              <ButtonIcon variant="secondary" size="small" icon="Plus" />
+            </div>
+          </div>
+        </div>
+
+        <h2 class="text-xl font-semibold mb-6">Animated Buttons with Icons</h2>
+        <div
+          class="border rounded-xl overflow-hidden bg-gray-50 p-4 sm:p-8 mb-12"
+        >
+          <div class="flex items-center space-x-4 gap-4">
+            <ButtonAnimate variant="primary"> Explore More </ButtonAnimate>
+
+            <ButtonAnimate variant="secondary"> View Pricing </ButtonAnimate>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div></Layout
+>

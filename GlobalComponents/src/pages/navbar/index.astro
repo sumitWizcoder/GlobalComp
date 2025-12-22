@@ -1,0 +1,72 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import NavbarBasic from "../../components/navbar/NavbarBasic.jsx";
+import NavbarCentered from "../../components/navbar/NavbarCentered.jsx";
+import NavbarWithCTA from "../../components/navbar/NavbarWithCTA.jsx";
+
+const links = [
+    { label: "Home", href: "#" },
+    { label: "Products", href: "#" },
+    { label: "Company", href: "#" },
+];
+---
+
+<Layout>
+    <div class="max-w-7xl mx-auto px-4 py-12">
+        <div class="mb-12">
+            <h1 class="text-3xl font-bold">Navbars</h1>
+            <p class="text-gray-600 mt-2">
+                A collection of responsive navigation bars.
+            </p>
+        </div>
+
+        <div class="space-y-24">
+            <section>
+                <h2 class="text-xl font-semibold mb-6">Simple Navbar</h2>
+                <div
+                    class="border rounded-xl overflow-hidden bg-gray-50 p-4 sm:p-8"
+                >
+                    <div
+                        class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100"
+                    >
+                        <NavbarBasic brand="Astro" links={links} client:load />
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-semibold mb-6">Centered Navbar</h2>
+                <div
+                    class="border rounded-xl overflow-hidden bg-gray-50 p-4 sm:p-8"
+                >
+                    <div
+                        class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100"
+                    >
+                        <NavbarCentered
+                            brand="Astro"
+                            links={links}
+                            client:load
+                        />
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-semibold mb-6">Navbar with CTA</h2>
+                <div
+                    class="border rounded-xl overflow-hidden bg-gray-50 p-4 sm:p-8"
+                >
+                    <div
+                        class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100"
+                    >
+                        <NavbarWithCTA
+                            brand="Astro"
+                            links={links}
+                            client:load
+                        />
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</Layout>

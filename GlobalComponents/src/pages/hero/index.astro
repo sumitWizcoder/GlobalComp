@@ -1,0 +1,46 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import HeroSimple from "../../components/hero/HeroSimple.jsx";
+import HeroSplit from "../../components/hero/HeroSplit";
+import HeroDark from "../../components/hero/HeroDark.jsx";
+---
+
+<Layout>
+  <div class="container mx-auto px-4 py-12">
+    <div class="mb-12">
+      <h1 class="text-3xl font-bold">Heroes</h1>
+      <p class="text-gray-600 mt-2">
+        Beautiful above-the-fold sections for your landing pages.
+      </p>
+    </div>
+
+    <div class="space-y-24">
+      <section>
+        <h2 class="text-xl font-semibold mb-6">Simple Centered Hero</h2>
+        <div class="mb-12">
+          <div class="bg-white overflow-hidden">
+            <HeroSimple
+              title="Build your next idea faster than ever"
+              description="Our component library helps you launch beautiful products in minutes, not weeks. Fully responsive and customizable."
+              primaryAction={{ label: "Get Started", href: "#" }}
+              secondaryAction={{ label: "Learn More", href: "#" }}
+              client:load
+            />
+          </div>
+        </div>
+
+        <h2 class="text-xl font-semibold mb-6">Split Hero Section</h2>
+        <div class="mb-12">
+          <div class="bg-white overflow-hidden">
+            <HeroSplit />
+          </div>
+        </div>
+
+        <h2 class="text-xl font-semibold mb-6">Dark Themed Hero</h2>
+        <div class="mb-12">
+          <HeroDark />
+        </div>
+      </section>
+    </div>
+  </div>
+</Layout>
