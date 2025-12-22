@@ -2,7 +2,7 @@ export default function Footer2() {
   return (
     <>
       <footer>
-        <div className="footer-top bg-[#F6F5F2] py-12 ">
+        <div className="footer-top bg-[#F6F5F2] py-12 z-10 relative">
           <div className="container mx-auto px-4">
             <div className="info-wrapper grid grid-cols-1 md:grid-cols-2 gap-8 pb-12">
               <div className="company-info flex flex-col gap-4 justify-start items-start">
@@ -22,7 +22,7 @@ export default function Footer2() {
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Commodi, cumque?
                 </p>
-                <div className="animated-button-div">
+                <div className="animated-button-div mt-16">
                   <a href="#" className="finovate-btn px-6 py-4 rounded-full text-white bg-green-600 hover:bg-green-700 duration-300 relative flex items-center ">
                     <div className="finovate-btn-content-wrapper">
                       <div className="finoavte-btn-icon-wrapper">
@@ -68,11 +68,11 @@ export default function Footer2() {
             </div>
           </div>
         </div>
-        <div className="footer-bottom pt-12">
-          <div className="container mx-auto">
+        <div className="footer-bottom pt-12 z-0 sticky bottom-0">
+          <div className="container mx-auto px-4">
             <div className="bg-white">
               <div className="menu-link-wrapper pb-12 border-b border-gray-200">
-                <ul className="flex justify-between">
+                <ul className="flex flex-col md:flex-row justify-between gap-4 md:gap-0">
                   <li>
                     <a href="#">Home</a>
                   </li>
@@ -90,7 +90,7 @@ export default function Footer2() {
                   </li>
                 </ul>
               </div>
-              <div className="copyright-wrapper flex flex-col md:flex-row md:justify-between md:items-center pt-6">
+              <div className="copyright-wrapper text-center md:text-left gap-4 md:gap-0 flex flex-col md:flex-row md:justify-between md:items-center pt-6">
                 <div className="copyright-text">
                   copyright &copy; 2024 GlobalComponents. All rights reserved.
                 </div>
