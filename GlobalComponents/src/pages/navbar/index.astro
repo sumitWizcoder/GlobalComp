@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import NavbarBasic from "../../components/navbar/NavbarBasic.jsx";
 import NavbarCentered from "../../components/navbar/NavbarCentered.jsx";
 import NavbarWithCTA from "../../components/navbar/NavbarWithCTA.jsx";
+import MegaNavbar from "../../components/navbar/MegaNavbar.jsx";
 
 const links = [
     { label: "Home", href: "#" },
@@ -64,6 +65,32 @@ const links = [
                             links={links}
                             client:load
                         />
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-semibold mb-6">Mega Menu Navbar</h2>
+                <div
+                    class="border rounded-xl overflow-hidden bg-gray-50 p-4 sm:p-8"
+                >
+                    <div
+                        class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100 min-h-[500px]"
+                    >
+                        <div class="relative">
+                            <MegaNavbar client:load />
+                            <div class="pt-32 px-8">
+                                <h3 class="text-2xl font-bold text-gray-900">
+                                    Content Section
+                                </h3>
+                                <p class="text-gray-600 mt-4 leading-relaxed">
+                                    This is a preview of the Mega Menu Navbar.
+                                    Hover over "Products" on desktop to see the
+                                    megamenu, or use the mobile toggle on
+                                    smaller screens.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
