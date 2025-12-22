@@ -83,38 +83,38 @@ export default function Footer3() {
 
             <style>
                 {`
-            .red-footer-gradient {
-                position: relative;
-                z-index: 1;
-                overflow: hidden;
-            }
-            .red-footer-gradient::before{
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(180deg, transparent 50%, #892026 100%);
-                z-index: 0;
-            }
-         
+                .red-footer-gradient {
+                    position: relative;
+                    z-index: 1;
+                    overflow: hidden;
+                }
+                .red-footer-gradient::before{
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(180deg, transparent 50%, #892026 100%);
+                    z-index: 0;
+                }
+            
 
-            .gradient-divider{
-                position: relative;
-            }
-            .gradient-divider::before{
-                content: "";
-                position: absolute;
-                top: 50%;
-                left: 0;
-                transform: translateY(-50%);
-                width: 100%;
-                height: 1px;
-                background: linear-gradient(136deg, #FFF 10%, #111 40%, #FFF 100%);
-            }
-           
-            `}
+                .gradient-divider{
+                    position: relative;
+                }
+                .gradient-divider::before{
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    transform: translateY(-50%);
+                    width: 100%;
+                    height: 1px;
+                    background: linear-gradient(136deg, #FFF 10%, #111 40%, #FFF 100%);
+                }
+            
+                `}
             </style>
         </>
     )
