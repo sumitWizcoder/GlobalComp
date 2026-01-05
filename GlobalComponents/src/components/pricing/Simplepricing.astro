@@ -1,0 +1,53 @@
+---
+import PricingCard from "./PricingCard.astro";
+
+const pricingPlans = [
+    {
+        title: "Basic",
+        subtitle: "For small businesses",
+        monthlyPrice: "$19",
+        yearlyPrice: "$190",
+        features: ["10 users", "20GB storage", "100GB bandwidth"],
+    },
+    {
+        title: "Premium",
+        subtitle: "For growing teams",
+        monthlyPrice: "$49",
+        yearlyPrice: "$490",
+        features: ["50 users", "100GB storage", "500GB bandwidth"],
+        isHighlighted: true,
+    },
+    {
+        title: "Enterprise",
+        subtitle: "For large organizations",
+        monthlyPrice: "$99",
+        yearlyPrice: "$990",
+        features: ["Unlimited users", "500GB storage", "Unlimited bandwidth"],
+    },
+];
+---
+
+<section class="section pricing-section py-10 md:20">
+    <div class="container mx-auto px-4">
+        <div class="content-wrapper flex flex-col gap-12">
+            <div class="heading-content flex flex-col gap-6 text-center">
+                <h2 class="section-heading text-5xl font-bold">Pricing</h2>
+                <p class="section-subheading text-xl">
+                    Choose the right plan for your business
+                </p>
+            </div>
+
+            <div class="pricing-card-content" data-billing="monthly">
+                <div
+                    class="pricing-cards-wrapper max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                >
+                    {pricingPlans.map((plan) => <PricingCard {...plan} />)}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Section specific styles can go here if needed */
+</style>

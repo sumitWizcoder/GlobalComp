@@ -1,2 +1,11 @@
 @import "tailwindcss";
+@import "@fontsource-variable/outfit";
 
+@theme {
+    --font-sans: "Outfit Variable", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+
+:root {
+    --main-theme-color: #4f39f6;
+}
