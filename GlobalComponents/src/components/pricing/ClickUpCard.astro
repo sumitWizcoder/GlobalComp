@@ -1,0 +1,114 @@
+---
+import { Check } from "@lucide/astro";
+
+interface Props {
+    title: string;
+    monthlyPrice: string;
+    yearlyPrice: string;
+    features: string[];
+    buttonText?: string;
+    buttonLink?: string;
+    isHighlighted?: boolean;
+    popularTag?: string;
+}
+
+const {
+    title,
+    monthlyPrice,
+    yearlyPrice,
+    features,
+    buttonText = "Get Started",
+    buttonLink = "#",
+    isHighlighted = false,
+    popularTag = "",
+} = Astro.props;
+---
+
+<div
+    class:list={[
+        "clickup-card p-4 border rounded-lg flex flex-col gap-2",
+        isHighlighted ? "is-highlighted" : "border-gray-200",
+    ]}
+>
+    <div class="card-header flex flex-col gap-2">
+        <h3 class="text-3xl font-semibold">
+            {title}
+            <span
+                class="popular-tag text-[var(--main-theme-color)] bg-white text-sm px-2 py-1 rounded"
+                >{popularTag}</span
+            >
+        </h3>
+        <p class="pricing-text text-4xl font-bold">
+            <span class="price-monthly" data-billing="monthly"
+                >{monthlyPrice}</span
+            >
+            <span class="price-yearly hidden" data-billing="yearly"
+                >{yearlyPrice}</span
+            >
+        </p>
+        <p class="pricing-duration">
+            Per user/month, billed <span
+                class="billing-type-label text-[var(--main-theme-color)]"
+                >monthly</span
+            >
+        </p>
+        <a
+            href={buttonLink}
+            class="btn py-2 px-4 w-full bg-[var(--main-theme-color)] text-white rounded-xl text-center inline-block"
+            >{buttonText}</a
+        >
+    </div>
+
+    <div class="card-content mt-4">
+        <p class="content-title font-semibold mb-2 text-sm uppercase">
+            Key Features:
+        </p>
+        <ul class="flex flex-col gap-2">
+            {
+                features.map((feature) => (
+                    <li class="flex items-center gap-2 text-sm">
+                        <Check
+                            size={16}
+                            class="text-[var(--main-theme-color)]"
+                        />{" "}
+                        {feature}
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+</div>
+
+<style>
+    .clickup-card {
+        transition: all 0.3s ease;
+    }
+    /* .clickup-card:not(.is-highlighted):hover {
+        border-color: var(--main-theme-color);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    } */
+    .clickup-card.is-highlighted {
+        border: 1px solid var(--main-theme-color);
+        background: var(--main-theme-color);
+        color: #fff;
+    }
+
+    .clickup-card.is-highlighted .btn {
+        background: #fff;
+        color: var(--main-theme-color);
+    }
+
+    .clickup-card.is-highlighted svg {
+        stroke: #fff;
+    }
+
+    .clickup-card.is-highlighted .billing-type-label {
+        color: #fff;
+    }
+    :global([data-billing="yearly"]) .price-monthly {
+        display: none;
+    }
+    :global([data-billing="yearly"]) .price-yearly {
+        display: inline;
+    }
+</style>

@@ -54,7 +54,8 @@ const {
             </div>
             <div class="price-yearly flex items-baseline">
                 <span
-                    class="pricing-card-price-value text-4xl font-semibold text-[var(--main-theme-color)]"
+                    class="pricing-card-price-value js-price-value text-4xl font-semibold text-[var(--main-theme-color)]"
+                    data-price-value={yearlyPrice.replace(/[^0-9.]/g, "")}
                 >
                     {yearlyPrice}
                 </span>

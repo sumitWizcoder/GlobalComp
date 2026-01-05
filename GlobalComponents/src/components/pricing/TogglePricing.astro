@@ -6,14 +6,14 @@ const pricingPlans = [
         title: "Basic",
         subtitle: "For small businesses",
         monthlyPrice: "$19",
-        yearlyPrice: "$190",
+        yearlyPrice: "$89",
         features: ["10 users", "20GB storage", "100GB bandwidth"],
     },
     {
         title: "Premium",
         subtitle: "For growing teams",
         monthlyPrice: "$49",
-        yearlyPrice: "$490",
+        yearlyPrice: "$319",
         features: ["50 users", "100GB storage", "500GB bandwidth"],
         isHighlighted: true,
     },
@@ -21,7 +21,7 @@ const pricingPlans = [
         title: "Enterprise",
         subtitle: "For large organizations",
         monthlyPrice: "$99",
-        yearlyPrice: "$990",
+        yearlyPrice: "$599",
         features: ["Unlimited users", "500GB storage", "Unlimited bandwidth"],
     },
 ];
@@ -83,45 +83,81 @@ const pricingPlans = [
     const yearlyLabel = document.getElementById("yearly-label");
     const dot = toggle?.querySelector(".dot");
 
-    toggle?.addEventListener("click", () => {
-        const currentBilling = toggle.getAttribute("data-billing");
-        const nextBilling = currentBilling === "monthly" ? "yearly" : "monthly";
+    function animateValue(
+        obj: HTMLElement,
+        start: number,
+        end: number,
+        duration: number,
+    ) {
+        let startTimestamp: number | null = null;
+        const step = (timestamp: number) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min(
+                (timestamp - startTimestamp) / duration,
+                1,
+            );
+            const current = Math.floor(progress * (end - start) + start);
+            obj.innerHTML = "$" + current;
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
 
-        // Update attributes
-        toggle.setAttribute("data-billing", nextBilling);
-        wrapper?.setAttribute("data-billing", nextBilling);
+    if (toggle && wrapper && monthlyLabel && yearlyLabel && dot) {
+        toggle.addEventListener("click", () => {
+            const currentBilling = toggle.getAttribute("data-billing");
+            const nextBilling =
+                currentBilling === "monthly" ? "yearly" : "monthly";
 
-        // Update dot position
-        if (nextBilling === "yearly") {
-            dot?.classList.add("translate-x-6");
-            toggle.classList.replace(
-                "bg-gray-200",
-                "bg-[var(--main-theme-color)]",
-            );
-            yearlyLabel?.classList.replace(
-                "text-gray-500",
-                "text-[var(--main-theme-color)]",
-            );
-            monthlyLabel?.classList.replace(
-                "text-[var(--main-theme-color)]",
-                "text-gray-500",
-            );
-        } else {
-            dot?.classList.remove("translate-x-6");
-            toggle.classList.replace(
-                "bg-[var(--main-theme-color)]",
-                "bg-gray-200",
-            );
-            yearlyLabel?.classList.replace(
-                "text-[var(--main-theme-color)]",
-                "text-gray-500",
-            );
-            monthlyLabel?.classList.replace(
-                "text-gray-500",
-                "text-[var(--main-theme-color)]",
-            );
-        }
-    });
+            // Update attributes
+            toggle.setAttribute("data-billing", nextBilling);
+            wrapper.setAttribute("data-billing", nextBilling);
+
+            // Update dot position
+            if (nextBilling === "yearly") {
+                dot.classList.add("translate-x-6");
+                toggle.classList.replace(
+                    "bg-gray-200",
+                    "bg-[var(--main-theme-color)]",
+                );
+                yearlyLabel.classList.replace(
+                    "text-gray-500",
+                    "text-[var(--main-theme-color)]",
+                );
+                monthlyLabel.classList.replace(
+                    "text-[var(--main-theme-color)]",
+                    "text-gray-500",
+                );
+
+                // Trigger animation for yearly prices
+                const priceElements =
+                    document.querySelectorAll<HTMLElement>(".js-price-value");
+                priceElements.forEach((el) => {
+                    const priceValue = el.getAttribute("data-price-value");
+                    if (priceValue) {
+                        const target = parseInt(priceValue);
+                        animateValue(el, 0, target, 600);
+                    }
+                });
+            } else {
+                dot.classList.remove("translate-x-6");
+                toggle.classList.replace(
+                    "bg-[var(--main-theme-color)]",
+                    "bg-gray-200",
+                );
+                yearlyLabel.classList.replace(
+                    "text-[var(--main-theme-color)]",
+                    "text-gray-500",
+                );
+                monthlyLabel.classList.replace(
+                    "text-gray-500",
+                    "text-[var(--main-theme-color)]",
+                );
+            }
+        });
+    }
 </script>
 
 <style>

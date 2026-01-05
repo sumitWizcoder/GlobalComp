@@ -1,0 +1,170 @@
+---
+import { Check } from "@lucide/astro";
+import ClickUpCard from "./ClickUpCard.astro";
+
+const pricingPlans = [
+    {
+        title: "Free Forever",
+        monthlyPrice: "$0",
+        yearlyPrice: "$0",
+        features: [
+            "Unlimited users",
+            "Unlimited storage",
+            "Unlimited bandwidth",
+        ],
+    },
+    {
+        title: "Unlimited",
+        monthlyPrice: "$10",
+        yearlyPrice: "$7",
+        features: [
+            "Everything in Free",
+            "Unlimited Storage",
+            "Unlimited List Views",
+        ],
+        isHighlighted: true,
+        popularTag: "Popular",
+    },
+    {
+        title: "Business",
+        monthlyPrice: "$19",
+        yearlyPrice: "$12",
+        features: ["Everything in Unlimited", "Google SSO", "Unlimited Teams"],
+    },
+    {
+        title: "Enterprise",
+        monthlyPrice: "$29",
+        yearlyPrice: "$19",
+        features: [
+            "Everything in Business",
+            "White Labeling",
+            "Advanced Permissions",
+        ],
+    },
+];
+---
+
+<section class="section pricing-section py-10 md:20">
+    <div class="container px-4 mx-auto">
+        <div class="content-wrapper flex flex-col gap-12">
+            <div class="heading-content-wrapper">
+                <h2
+                    class="section-heading text-6xl font-bold text-center max-w-2xl mx-auto"
+                >
+                    The best work solution, for the best price.
+                </h2>
+            </div>
+
+            <div class="pricing-content-wrapper flex flex-col gap-12">
+                <div
+                    class="toggle-items-wrapper flex justify-between items-center flex-col md:flex-row gap-4 md:gap-0"
+                >
+                    <div
+                        class="value-toggle flex gap-3 items-center bg-gray-50 border border-gray-100 py-3 px-6 rounded-full"
+                    >
+                        <Check class="text-green-500" />
+                        <span class="font-medium text-gray-700"
+                            >100% Money-back Guarantee</span
+                        >
+                    </div>
+
+                    <div
+                        class="toggle-container flex flex-col items-start gap-2"
+                    >
+                        <p
+                            class="text-[var(--main-theme-color)] font-semibold text-sm"
+                        >
+                            Save up to 30% with yearly
+                        </p>
+                        <!-- Toggle UI -->
+                        <div class="flex items-center gap-4">
+                            <span
+                                id="monthly-label-clickup"
+                                class="text-lg font-medium text-[var(--main-theme-color)]"
+                                >Monthly</span
+                            >
+                            <button
+                                id="billing-toggle-clickup"
+                                class="relative w-14 h-8 bg-gray-200 rounded-full p-1 transition-colors duration-300 focus:outline-none"
+                                aria-label="Toggle billing cycle"
+                                data-billing="monthly"
+                            >
+                                <div
+                                    class="dot w-6 h-6 bg-white rounded-full shadow-md transform transition-transform duration-300 pointer-events-none"
+                                >
+                                </div>
+                            </button>
+                            <span
+                                id="yearly-label-clickup"
+                                class="text-lg font-medium text-gray-400"
+                                >Yearly</span
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="clickup-cards-wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+                    id="pricing-wrapper-clickup"
+                    data-billing="monthly"
+                >
+                    {pricingPlans.map((plan) => <ClickUpCard {...plan} />)}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const toggle = document.getElementById("billing-toggle-clickup");
+    const wrapper = document.getElementById("pricing-wrapper-clickup");
+    const monthlyLabel = document.getElementById("monthly-label-clickup");
+    const yearlyLabel = document.getElementById("yearly-label-clickup");
+    const dot = toggle?.querySelector(".dot");
+
+    toggle?.addEventListener("click", () => {
+        const currentBilling = toggle.getAttribute("data-billing");
+        const nextBilling = currentBilling === "monthly" ? "yearly" : "monthly";
+
+        // Update attributes
+        toggle.setAttribute("data-billing", nextBilling);
+        wrapper?.setAttribute("data-billing", nextBilling);
+
+        // Update labels in cards
+        const billingLabels = wrapper?.querySelectorAll(".billing-type-label");
+        billingLabels?.forEach((label) => {
+            label.textContent = nextBilling;
+        });
+
+        // Update dot position and colors
+        if (nextBilling === "yearly") {
+            dot?.classList.add("translate-x-6");
+            toggle.classList.replace(
+                "bg-gray-200",
+                "bg-[var(--main-theme-color)]",
+            );
+            yearlyLabel?.classList.replace(
+                "text-gray-400",
+                "text-[var(--main-theme-color)]",
+            );
+            monthlyLabel?.classList.replace(
+                "text-[var(--main-theme-color)]",
+                "text-gray-400",
+            );
+        } else {
+            dot?.classList.remove("translate-x-6");
+            toggle.classList.replace(
+                "bg-[var(--main-theme-color)]",
+                "bg-gray-200",
+            );
+            yearlyLabel?.classList.replace(
+                "text-[var(--main-theme-color)]",
+                "text-gray-400",
+            );
+            monthlyLabel?.classList.replace(
+                "text-gray-400",
+                "text-[var(--main-theme-color)]",
+            );
+        }
+    });
+</script>
