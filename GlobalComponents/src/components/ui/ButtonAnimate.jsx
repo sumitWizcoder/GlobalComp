@@ -34,7 +34,7 @@ export default function ButtonAnimate({
             text-decoration: none;
             position: relative;
             overflow: hidden;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
           }
 
           /* ===== Animation Layer ===== */

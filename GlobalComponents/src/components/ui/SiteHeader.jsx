@@ -41,7 +41,7 @@ const SiteHeader = () => {
           {/* CTA Section */}
           <div className="hidden md:flex items-center gap-4">
             <a
-              href="https://github.com"
+              href="https://github.com/sumitWizcoder"
               className="p-2 text-gray-600 hover:text-gray-900 transition-all duration-300 hover:scale-110"
               target="_blank"
               rel="noopener noreferrer"

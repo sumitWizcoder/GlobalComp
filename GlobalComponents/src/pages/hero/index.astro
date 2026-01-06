@@ -3,12 +3,13 @@ import Layout from "../../layouts/Layout.astro";
 import HeroSimple from "../../components/hero/HeroSimple.jsx";
 import HeroSplit from "../../components/hero/HeroSplit";
 import HeroDark from "../../components/hero/HeroDark.jsx";
+import HeroWithImage from "../../components/hero/HeroWithImage.jsx";
 ---
 
 <Layout>
   <div class="container mx-auto px-4 py-12">
-    <div class="mb-12">
-      <h1 class="text-3xl font-bold">Heroes</h1>
+    <div class="mb-12 md:text-left text-center">
+      <h1 class="text-6xl font-bold">Heroes</h1>
       <p class="text-gray-600 mt-2">
         Beautiful above-the-fold sections for your landing pages.
       </p>
@@ -39,6 +40,11 @@ import HeroDark from "../../components/hero/HeroDark.jsx";
         <h2 class="text-xl font-semibold mb-6">Dark Themed Hero</h2>
         <div class="mb-12">
           <HeroDark />
+        </div>
+
+        <h2 class="text-xl font-semibold mb-6">Hero With Image</h2>
+        <div class="mb-12">
+          <HeroWithImage />
         </div>
       </section>
     </div>
