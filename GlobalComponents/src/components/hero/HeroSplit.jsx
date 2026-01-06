@@ -48,13 +48,13 @@ export default function HeroSplit() {
             />
 
             <div className="floating-card ">
-              <div className="image-card absolute bottom-[5%] right-[5%] bg-blue-500 rounded-lg p-2 w-70">
+              <div className="image-card absolute bottom-[5%] right-[5%] bg-green-800 rounded-lg p-2 w-70">
                 <img
                   src="images/component-image.webp"
                   alt="image-card-image"
                   className="rounded-md h-auto "
                 />
-                <p className="text-white mt-2">
+                <p className="text-white mt-2 px-1">
                   Lorem ipsum dolor sit amet amet si consectetur adipisicing
                   elit.
                 </p>
