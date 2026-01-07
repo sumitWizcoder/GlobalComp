@@ -52,7 +52,7 @@ export default function HeroSplit() {
                 <img
                   src="images/component-image-person.webp"
                   alt="image-card-image"
-                  className="rounded-md md:h-auto h-45 object-cover w-full"
+                  className="rounded-md   h-45 object-cover w-full"
                 />
                 <p className="text-white mt-2 px-1 hidden md:block">
                   Lorem ipsum dolor sit amet amet si consectetur adipisicing
